@@ -1,0 +1,13 @@
+<form action="/home/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+<hr>
+
+{% if messages %}
+    {% for message in messages %}
+        <h3> {{ message }}</h3>
+    {% endfor %}
+{% endif %}
