@@ -1,3 +1,5 @@
+<h1> Please Swipe Your Card or Enter W# </h1>
+
 <form action="/home/" method="post">
     {% csrf_token %}
     {{ form }}
@@ -6,6 +8,7 @@
 
 <hr>
 
+{#Not exactly sure how messages work yet since I don't explicitly pass them to the web page. Easy to implement though#}
 {% if messages %}
     {% for message in messages %}
         <h3> {{ message }}</h3>
