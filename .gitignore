@@ -1,0 +1,17 @@
+.idea/49X_DRS_Server.iml
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+server/cardreader/__pycache__/__init__.cpython-35.pyc
+server/cardreader/__pycache__/admin.cpython-35.pyc
+server/cardreader/__pycache__/forms.cpython-35.pyc
+server/cardreader/__pycache__/models.cpython-35.pyc
+server/cardreader/__pycache__/urls.cpython-35.pyc
+server/cardreader/__pycache__/views.cpython-35.pyc
+server/cardreader/migrations/__pycache__/__init__.cpython-35.pyc
+server/server/__pycache__/__init__.cpython-35.pyc
+server/server/__pycache__/settings.cpython-35.pyc
+server/server/__pycache__/urls.cpython-35.pyc
+server/server/__pycache__/wsgi.cpython-35.pyc
