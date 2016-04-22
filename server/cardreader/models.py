@@ -6,4 +6,4 @@ from django.db import models
 class Student(models.Model):
     w_num = models.CharField(max_length=9)
     in_time = models.TimeField()
-    out_time = models.TimeField()
+    out_time = models.TimeField(null=True)
