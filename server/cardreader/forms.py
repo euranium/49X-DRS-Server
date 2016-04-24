@@ -5,5 +5,5 @@ from django import forms
 # Each time the class is instantiated it constructs a new html <form>
 class NameForm(forms.Form):
     w_number = forms.CharField(widget=forms.TextInput(
-        attrs={'placeholder': 'W########', 'autofocus': 'autofocus'}), label='W#   ', max_length=100)
+        attrs={'placeholder': '########', 'autofocus': 'autofocus'}), label='W   ', max_length=100)
 
