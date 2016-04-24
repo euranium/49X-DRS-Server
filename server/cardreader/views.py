@@ -15,7 +15,7 @@ def index(request):
 
         # Use regex to parse out w_number
         w_num = request.POST['w_number']
-        pattern = re.compile("(W[0-9]{8})")  # Could take 'W' out of parenthesis to only capture 8 digits
+        pattern = re.compile("W?([0-9]{8})")  # Possibly always add the W, or make sure it doesnt add any numbers after it, for using the card
         match = pattern.search(w_num)
         w_num = match.group(1)
 
