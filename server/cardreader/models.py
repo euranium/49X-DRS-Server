@@ -4,6 +4,6 @@ from django.db import models
 
 # Create a Student table in the database with the following fields
 class Student(models.Model):
-    w_num = models.CharField(max_length=9)
+    w_num = models.CharField(max_length=8)
     in_time = models.TimeField()
     out_time = models.TimeField(null=True)
