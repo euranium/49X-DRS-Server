@@ -6,7 +6,7 @@ from django.db import models
 class Student(models.Model):
 	def __unicode__(self):
 		return format(self.w_num) + '-' + format(self.date)
-	w_num = models.CharField(max_length=9)
+	w_num = models.CharField(max_length=8)
 	in_time = models.TimeField()
 	out_time = models.TimeField(null=True)
 	date = models.DateField(auto_now_add=True)
