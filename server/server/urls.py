@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^home/', include('cardreader.urls')),
     url(r'^.*/$', include('cardreader.urls')),
+    url(r'^/', include('cardreader.urls')),
 ]
