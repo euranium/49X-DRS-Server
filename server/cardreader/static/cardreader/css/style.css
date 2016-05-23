@@ -1,0 +1,47 @@
+html, body {
+	height:100%
+}
+
+#header {
+	background-color: #BDBDBD;
+	height: 150px;
+}
+#header h2 {
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	margin-top: 60px;
+}
+
+#wform {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	display: inline-block;
+}
+#wform label {
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 22px;
+}
+#wform fieldset{
+	display: inline-block;
+}
+#wform input {
+	display: inline-block;
+	font-size: 20px;
+}
+#submit {
+	width: 80px;
+	height: 35px;
+	margin-left: 20px;
+	text-align: center;
+}
+
+#num {
+	max-width: 170px;
+}
+
+#footer {
+	text-align: center;
+}

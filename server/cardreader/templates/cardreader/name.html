@@ -1,9 +1,11 @@
 <h1> Please Swipe Your Card or Enter W# </h1>
 
-<form action="/home/" method="post">
+<form action="/home/" method="post" id="wform">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
+	<fieldset class="form-group" id="winput">
+		{{ form }}
+    <input type="submit" value="Submit" id="submit">
+	</fieldset>
 </form>
 
 <hr>
