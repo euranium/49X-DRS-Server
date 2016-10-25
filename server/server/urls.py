@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^home/', include('cardreader.urls')),
     url(r'^.*/$', include('cardreader.urls')),
     url(r'^$', include('cardreader.urls')),
+	url(r'^admin_tools/', include('admin_tools.urls')),
 ]
