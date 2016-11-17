@@ -1,19 +1,49 @@
 from django.test import TestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import requests
+import requests, datetime
 from .models import Student
 
 url = 'http://127.0.0.1:8000/'
 
 class StudentTestCase(TestCase):
-    def setUp(self):
 
-    def testInput(self):
+    # def setUp(self):
+        
+    # def testAdmin(self):
 
-    def testAdmin(self):
+    # def testAuth(self):
 
-    def testAuth(self):
+    def testCreateStudent(self):
+        w_num = 01234567
+        in_time = datetime.datetime.now()
+        student = Student(w_num=w_num, in_time=in_time)
+        student.save()
+        query = Student.objects.filter(w_num=w_num, in_time=in_time)
+        self.assertTrue(query)
+
+    def testRapidSwipes(self):
+        w_num = 01234567
+        in_time = datetime.datetime.now()
+        student = Student(w_num=w_num, in_time=in_time)
+        student.save()
+        student = Student(w_num=w_num, in_time=in_time)
+        student.save()
+        student = Student(w_num=w_num, in_time=in_time)
+        student.save()
+        query = Student.objects.filter(w_num=w_num, in_time=in_time)
+        self.assertEqual(query.count(), 1)
+
+    def testLogOutStudent(self):
+        w_num = 01234567
+        in_time = datetime.datetime.now()
+        out_time = datetime.datetime.now()
+        student = Student(w_num=w_num, in_time=in_time)
+        student.out_time = out_time
+        student.save()
+        query = Student.objects.filter(w_num=w_num, in_time=in_time)
+        self.assertEqual(student.out_time, out_time)
+
 
     def capturePage(self):
         driver = webdriver.Firefox()
