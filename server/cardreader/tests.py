@@ -39,6 +39,31 @@ class StudentTestCase(TestCase):
         query = Student.objects.filter(w_num=w_num, in_time=in_time)
         self.assertEqual(student.out_time, out_time)
 
+    def testInvalidId(self):
+        w_num = "painandsuffering"
+        in_time = datetime.datetime.now()
+        student = Student(w_num=w_num, in_time=in_time)
+        student.save()
+        query = Student.objects.filter(w_num=w_num, in_time=in_time)
+        self.assertEqual(query.count(), 0)
+
+    def testEditStudent(self):
+        w_num = 01234567
+        in_time = datetime.datetime.now()
+        out_time = datetime.datetime.now()
+        student = Student(w_num=w_num, in_time=in_time)
+        student.out_time = out_time
+        student.save()
+        query = Student.objects.filter(w_num=w_num, in_time=in_time)
+        student = query.get()
+        new_in_time = datetime.datetime.now()
+        student.in_time = new_in_time
+        student.save()
+        query = Student.objects.filter(w_num=w_num, in_time=in_time)
+        self.assertEqual(query.count(), 0)
+        query = Student.objects.filter(w_num=w_num, in_time=new_in_time)
+        self.assertEqual(query.count(), 1)
+
     def testCapturePage(self):
         driver = webdriver.Firefox()
         driver.get(url)
