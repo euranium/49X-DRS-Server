@@ -25,7 +25,7 @@ SECRET_KEY = 'bf^trry081@34yn+t394(7gl08izz*!9)t^#w(dozqlbcgs*-@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['drslogin.wwu.edu']
 
 
 # Application definition
@@ -120,3 +120,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = '/srv/www/vhosts.d/drslogin.wwu.edu/drslogin/static'
