@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect
 from .forms import NameForm
 from django.contrib import messages
 from .models import Student
+from django.utils import timezone
+
 
 # Create your views here.
 
@@ -26,15 +28,19 @@ def index(request):
             w_num = match.group(1)
             query = Student.objects.filter(w_num=w_num).filter(out_time=None).last()
             if query:  # log user out
-                current_time = datetime.datetime.now()
-                query.out_time = current_time
+                current_time = timezone.now()
+                in_time = query.in_time
+            	query.out_time = current_time
+                dt = current_time - in_time
+                duration = dt.seconds
+                query.total_time = duration / 60
                 query.save()
                 # Compile message to be sent to web page
                 message = "Thank you for logging out, " + w_num
                 messages.success(request, message)
             else:
                 # Create a new instance of Student class and log student in
-                current_time = datetime.datetime.now()
+                current_time = timezone.now()
                 student = Student(w_num=w_num, in_time=current_time)
                 student.save()
                 # Compile message to be sent to web page
