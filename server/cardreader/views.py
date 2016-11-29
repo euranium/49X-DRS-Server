@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from .forms import NameForm
 from django.contrib import messages
 from .models import Student
+from django.utils import timezone
 
 # Create your views here.
 
@@ -37,20 +38,23 @@ def isValidId(w_num):
 
 def processUserLogging(w_num):
     query = Student.objects.filter(w_num=w_num).filter(out_time=None).last()
-    current_time = datetime.datetime.now()
+    current_time = timezone.now()
     if query:
-        if ((current_time - datetime.timedelta(minutes=1)).time() < query.in_time):
+        dur = (current_time - query.in_time).seconds
+        if (dur / 60 < 1):
             #User tried to swipe again within 60 seconds
             #Most likely accidental multiple swipe, ignore
-            message = "You are already logged in " + w_num + " wait 60 seconds before logging out"
+            message = "You are already logged in " + w_num + " wait " + str(60-dur) + " seconds before logging out"
         else:
+            in_time = query.in_time
             query.out_time = current_time
+            dt = current_time - in_time
+            query.duration = dt.seconds / 60
             query.save()
             # Compile message to be sent to web page
             message = "Thank you for logging out, " + w_num
     else:
         # Create a new instance of Student class and log student in
-        current_time = datetime.datetime.now()
         student = Student(w_num=w_num, in_time=current_time)
         student.save()
         # Compile message to be sent to web page
