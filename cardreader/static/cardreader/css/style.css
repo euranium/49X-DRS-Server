@@ -12,13 +12,6 @@ html, body {
 	align-items:center;
 	margin-top: 60px;
 }
-.col-sm-2 {
-	width: 50%;
-}
-.col-sm-3 {
-	width: 50%;
-}
-
 h1 {
 	text-align: center;
 }
