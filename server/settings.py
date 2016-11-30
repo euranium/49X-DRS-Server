@@ -101,8 +101,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Redirict url for not-logged-in user
+# Redirect url for not-logged-in user
 LOGIN_URL = '/admin/login/'
+
+# Session expiration settings
+SESSION_COOKIE_AGE = 50400 # 50400 secs = 14 hours
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
 # Internationalization
