@@ -1,6 +1,6 @@
 <h1> Please Swipe Your Card or Enter W# </h1>
 
-<form action="/home/" method="post" id="wform">
+<form action="/home/" method="post" id="wform" autocomplete="off">
     {% csrf_token %}
 	<fieldset class="form-group" id="winput">
 		{{ form }}
