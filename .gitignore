@@ -56,6 +56,8 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+cardreader/migrations/*
+server/secret.txt
 
 # Flask instance folder
 instance/
