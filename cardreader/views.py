@@ -5,9 +5,10 @@ from .forms import NameForm
 from django.contrib import messages
 from .models import Student
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required
 def index(request):
     w_num = "default"
     if request.method == 'POST':

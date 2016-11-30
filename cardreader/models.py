@@ -11,6 +11,8 @@ class Student(models.Model):
 	out_time = models.DateTimeField(null=True)
 	date = models.DateField(auto_now_add=True)
 	duration = models.IntegerField(null=True, blank=True, default=0)
+	note = models.CharField(max_length=256, editable=True, default='')
+
 
 	def average(self, w_num, duration):
 		qs = Student.objects.filter(w_num=w_num,duration__gt=0)
