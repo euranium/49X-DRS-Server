@@ -16,6 +16,8 @@ class Student(models.Model):
 
 	def average(self, w_num, duration):
 		qs = Student.objects.filter(w_num=w_num,duration__gt=0)
+		if not qs:
+			return 0
 		avg = qs.aggregate(Avg('duration'))
 		return int(avg['duration__avg'])
 	def get_average(self):
