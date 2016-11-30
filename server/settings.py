@@ -101,6 +101,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Redirict url for not-logged-in user
+LOGIN_URL = '/admin/login/'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

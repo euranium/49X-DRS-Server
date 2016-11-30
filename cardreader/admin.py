@@ -7,11 +7,10 @@ sort_st.short_description = "test"
 
 class StudentAdmin(admin.ModelAdmin):
 	readonly_fields = ('date',)
-	list_display = ('w_num','date','in_time','out_time','duration','get_average')
+	list_display = ('w_num','date','in_time','out_time','duration','get_average','note')
 	ordering = ('date',)
 	actions = [sort_st]
 	search_fields = ('w_num','date',)
 	list_filter = ('date',)
 admin.site.register(Student,StudentAdmin)
 # Register your models here.
-
