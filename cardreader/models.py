@@ -13,7 +13,7 @@ class Student(models.Model):
 	duration = models.IntegerField(null=True, blank=True, default=0)
 
 	def average(self, w_num, duration):
-		qs = self._default_manager.filter(w_num=w_num)
+		qs = Student.objects.filter(w_num=w_num,duration__gt=0)
 		avg = qs.aggregate(Avg('duration'))
 		return int(avg['duration__avg'])
 	def get_average(self):
