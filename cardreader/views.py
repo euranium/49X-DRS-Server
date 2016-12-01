@@ -56,7 +56,6 @@ def processUserLogging(w_num):
                 student = Student(w_num=w_num, in_time=current_time)
                 student.save()
                 message = "Thank you for logging in, " + w_num
-            # Compile message to be sent to web page
     else:
         # Create a new instance of Student class and log student in
         student = Student(w_num=w_num, in_time=current_time)
