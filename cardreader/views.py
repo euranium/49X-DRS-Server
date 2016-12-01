@@ -49,11 +49,14 @@ def processUserLogging(w_num):
         else:
             in_time = query.in_time
             query.out_time = current_time
-            dt = current_time - in_time
-            query.duration = dt.seconds / 60
+            query.duration = dur / 60
             query.save()
-            # Compile message to be sent to web page
             message = "Thank you for logging out, " + w_num
+            if(dur / 60 > 300):
+                student = Student(w_num=w_num, in_time=current_time)
+                student.save()
+                message = "Thank you for logging in, " + w_num
+            # Compile message to be sent to web page
     else:
         # Create a new instance of Student class and log student in
         student = Student(w_num=w_num, in_time=current_time)
