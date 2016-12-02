@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,12 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 SECRET_FILE = os.path.join(SITE_ROOT, 'secret.txt')
-SECRET_KEY = open(SECRET_FILE).read().strip() 
+SECRET_KEY = open(SECRET_FILE).read().strip()
+DB_PASS_FILE = os.path.join(SITE_ROOT, 'db_password.txt')
+DB_PASSWORD = open(DB_PASS_FILE).read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['drslogin.wwu.edu']
+ALLOWED_HOSTS = ['drslogin.wwu.edu', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -73,17 +76,26 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if socket.gethostname() == 'webtechlamp1':
+    DATABASES = {
+        'USER': 'drslogin',
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'drslogin',
+            'PASSWORD': DB_PASSWORD,
+            'HOST': '/var/run/mysql/mysql.sock',
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+     }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
