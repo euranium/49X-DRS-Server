@@ -58,6 +58,8 @@ coverage.xml
 local_settings.py
 cardreader/migrations/*
 server/secret.txt
+server/db_password.txt
+db.sqlite3
 
 # Flask instance folder
 instance/
