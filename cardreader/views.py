@@ -43,19 +43,23 @@ def processUserLogging(w_num):
     if query:
         dur = (current_time - query.in_time).seconds
         if (dur / 60 < 1):
-            #User tried to swipe again within 60 seconds
-            #Most likely accidental multiple swipe, ignore
+            # User tried to swipe again within 60 seconds
+            # Most likely accidental multiple swipe, ignore
             message = "You are already logged in " + w_num + " wait " + str(60-dur) + " seconds before logging out"
-        else:
+        elif (dur / 60 <= 300):
+            # User properly logged out
             in_time = query.in_time
             query.out_time = current_time
             query.duration = dur / 60
             query.save()
             message = "Thank you for logging out, " + w_num
-            if(dur / 60 > 300):
-                student = Student(w_num=w_num, in_time=current_time)
-                student.save()
-                message = "Thank you for logging in, " + w_num
+        else:
+            # User didn't log out last time. Sign them in for a new session
+            query.valid = False
+            query.save()
+            student = Student(w_num=w_num, in_time=current_time)
+            student.save()
+            message = "Thank you for logging in, " + w_num
     else:
         # Create a new instance of Student class and log student in
         student = Student(w_num=w_num, in_time=current_time)
