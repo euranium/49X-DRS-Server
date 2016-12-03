@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'server.wsgi.application'
 
 if socket.gethostname() == 'webtechlamp1':
     DATABASES = {
-        'USER': 'drslogin',
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'drslogin',
+            'USER': 'drslogin',
             'PASSWORD': DB_PASSWORD,
             'HOST': '/var/run/mysql/mysql.sock',
         }
