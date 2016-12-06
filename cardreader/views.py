@@ -55,7 +55,7 @@ def processUserLogging(w_num):
             message = "Thank you for logging out, " + w_num
         else:
             # User didn't log out last time. Sign them in for a new session
-            query.valid = False
+            query.logged_out = False
             query.save()
             student = Student(w_num=w_num, in_time=current_time)
             student.save()
