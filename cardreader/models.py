@@ -11,7 +11,7 @@ class Student(models.Model):
 	out_time = models.DateTimeField(null=True)
 	date = models.DateField(auto_now_add=True)
 	duration = models.IntegerField(null=True, blank=True, default=0)
-	valid = models.BooleanField(default=True)
+	logged_out = models.BooleanField(default=True)
 	note = models.CharField(max_length=256, editable=True, default='')
 
 
