@@ -49,14 +49,13 @@ def processUserLogging(w_num):
         elif (dur / 60 <= 300):
             # User properly logged out
             in_time = query.in_time
+            query.logged_out = True
             query.out_time = current_time
             query.duration = dur / 60
             query.save()
             message = "Thank you for logging out, " + w_num
         else:
             # User didn't log out last time. Sign them in for a new session
-            query.logged_out = False
-            query.save()
             student = Student(w_num=w_num, in_time=current_time)
             student.save()
             message = "Thank you for logging in, " + w_num
