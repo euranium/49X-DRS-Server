@@ -12,7 +12,7 @@ class Student(models.Model):
 	date = models.DateField(auto_now_add=True)
 	duration = models.IntegerField(null=True, blank=True, default=0)
 	logged_out = models.BooleanField(default=False)
-	note = models.CharField(max_length=256, editable=True, default='')
+	note = models.CharField(max_length=256, editable=True, default='', blank=True)
 
 
 	def average(self, w_num, duration):
