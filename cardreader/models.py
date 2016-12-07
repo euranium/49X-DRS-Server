@@ -8,7 +8,7 @@ import datetime
 class Student(models.Model):
 	w_num = models.CharField(max_length=8)
 	in_time = models.DateTimeField()
-	out_time = models.DateTimeField(null=True)
+	out_time = models.DateTimeField(null=True, blank=True)
 	date = models.DateField(auto_now_add=True)
 	duration = models.IntegerField(null=True, blank=True, default=0)
 	logged_out = models.BooleanField(default=False)
