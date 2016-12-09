@@ -40,14 +40,13 @@ def isValidId(w_num):
 def processUserLogging(w_num):
     query = Student.objects.filter(w_num=w_num).filter(out_time=None).last()
     current_time = timezone.now()
-    current_date = datetime.datetime.now().date()
     if query:
-        dur = (current_time - query.in_time).seconds
-        if (dur / 60 < 1 and query.in_time.date() == current_date):
+        dur = int((current_time - query.in_time).total_seconds())
+        if (dur / 60 < 1):
             # User tried to swipe again within 60 seconds
             # Most likely accidental multiple swipe, ignore
             message = "You are already logged in " + w_num + " wait " + str(60-dur) + " seconds before logging out"
-        elif (dur / 60 <= 390 and query.in_time.date() == current_date): # 390 == 6 hours 30 mins
+        elif (dur / 60 <= 390): # 390 == 6 hours 30 mins
             # User properly logged out
             in_time = query.in_time
             query.logged_out = True
